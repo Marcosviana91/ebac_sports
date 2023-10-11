@@ -15,12 +15,11 @@ const carrinhoSlice = createSlice({
   name: 'carrinho',
   initialState,
   reducers: {
-    adicionar: (state, action: PayloadAction<Produto>) => {
-      const n_produto = action.payload
-      if (state.itens.find((produto) => produto.id === n_produto.id)) {
+    adicionar: (state, { payload }: PayloadAction<Produto>) => {
+      if (state.itens.find((produto) => produto.id === payload.id)) {
         alert('Produto já adicionado...')
       } else {
-        state.itens = [...state.itens, n_produto]
+        state.itens = [...state.itens, payload]
       }
     }
   }
